@@ -63,7 +63,7 @@ const productSlice = createSlice({
       state.creatingProduct = false;
       action.payload();
     },
-    updateProduct: (state, action: PayloadAction<Product>) => {
+    updateProduct: (state, _action: PayloadAction<Product>) => {
       state.updatingProduct = true;
     },
     updateProductSuccess: (state, {payload}: PayloadAction<Product>) => {

@@ -5,7 +5,7 @@ export type StackScreens = {
   Register: undefined;
   Home: undefined;
   CreateOrUpdate?: {docId: string};
-  View: {id: string, name: string};
+  View: {id: string; name: string};
 };
 
 export type ScreenProp<Screen extends keyof StackScreens> =

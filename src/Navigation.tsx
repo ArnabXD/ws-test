@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import auth from '@react-native-firebase/auth';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {signInSuccess} from './redux/features/auth/slice';
+import {setUser} from './redux/features/auth/slice';
 import {RootState} from './redux/store';
 import {StackScreens} from './navtypes';
 
@@ -18,19 +18,25 @@ const Stack = createNativeStackNavigator<StackScreens>();
 export default function Navigation() {
   const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const sub = auth().onAuthStateChanged(_user => {
       if (_user) {
-        dispatch(signInSuccess(_user));
+        dispatch(setUser(_user));
       }
     });
     return sub;
   }, [dispatch]);
+
   return (
     <Stack.Navigator>
       {user ? (
         <>
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="Home"
+            options={{headerTitle: 'Products'}}
+            component={Home}
+          />
           <Stack.Screen
             name="CreateOrUpdate"
             component={CreateOrUpdate}

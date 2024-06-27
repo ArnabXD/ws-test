@@ -13,6 +13,7 @@ import {
   useTheme,
   Subheading,
   Caption,
+  Text,
 } from 'react-native-paper';
 import {useDispatch, useSelector} from 'react-redux';
 import {useFocusEffect} from '@react-navigation/native';
@@ -46,7 +47,7 @@ export default function Home({navigation}: ScreenProp<'Home'>) {
   }
 
   return (
-    <View>
+    <View style={styles.main}>
       <FlatList
         data={products}
         keyExtractor={item => item.id}
@@ -88,19 +89,28 @@ export default function Home({navigation}: ScreenProp<'Home'>) {
             </Card>
           </TouchableRipple>
         )}
+        ListEmptyComponent={
+          <View style={styles.center}>
+            <Text>No Products Found</Text>
+          </View>
+        }
+        ListFooterComponent={
+          <View style={[styles.row, styles.mt10]}>
+            <Button
+              mode="contained"
+              style={[styles.btn, styles.main]}
+              onPress={() => navigation.navigate('CreateOrUpdate')}>
+              Add Product
+            </Button>
+            <Button
+              mode="contained"
+              style={[styles.btn, styles.main]}
+              onPress={() => dispatch(signOut())}>
+              Sign out
+            </Button>
+          </View>
+        }
       />
-      <Button
-        mode="contained"
-        style={styles.btn}
-        onPress={() => navigation.navigate('CreateOrUpdate')}>
-        Add Product
-      </Button>
-      <Button
-        mode="contained"
-        style={styles.btn}
-        onPress={() => dispatch(signOut())}>
-        Sign out
-      </Button>
     </View>
   );
 }
@@ -116,6 +126,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginBottom: 10,
   },
+  main: {flex: 1},
   row: {
     flexDirection: 'row',
   },
@@ -127,6 +138,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DDDDDD',
   },
   flContainer: {
+    flexGrow: 1,
     paddingHorizontal: 10,
     paddingVertical: 20,
   },
@@ -135,6 +147,9 @@ const styles = StyleSheet.create({
   },
   mb10: {
     marginBottom: 10,
+  },
+  mt10: {
+    marginTop: 10,
   },
   infoArea: {
     flex: 1,

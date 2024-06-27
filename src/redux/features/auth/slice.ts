@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
 import type {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import BootSplash from 'react-native-bootsplash';
 
 import {Alert} from 'react-native';
 
@@ -41,9 +40,6 @@ export const authSlice = createSlice({
       state.user = payload;
       state.signInLoading = false;
       state.signInError = null;
-
-      // to do, hide this using redux-saga;
-      setTimeout(() => BootSplash.hide(), 500);
     },
     signFail: (state, {payload}: PayloadAction<string>) => {
       state.signInLoading = false;
@@ -51,7 +47,7 @@ export const authSlice = createSlice({
       Alert.alert('Error', payload);
     },
     signUp: (state, _action: PayloadAction<LoginPayload>) => {
-      state.signUpLoading = false;
+      state.signUpLoading = true;
       state.signUpError = null;
     },
     signUpSuccess: (state, action: PayloadAction<FirebaseAuthTypes.User>) => {
@@ -61,6 +57,11 @@ export const authSlice = createSlice({
     signUpFailure: (state, action: PayloadAction<string>) => {
       state.signUpLoading = false;
       state.signUpError = action.payload;
+    },
+    setUser: (state, {payload}: PayloadAction<FirebaseAuthTypes.User>) => {
+      state.user = payload;
+      state.signInLoading = false;
+      state.signInError = null;
     },
     signOut: () => initialState,
   },
@@ -73,6 +74,7 @@ export const {
   signUp,
   signUpSuccess,
   signUpFailure,
+  setUser,
   signOut,
 } = authSlice.actions;
 export default authSlice.reducer;

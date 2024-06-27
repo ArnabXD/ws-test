@@ -182,7 +182,8 @@ const styles = StyleSheet.create({
   main: {flex: 1},
   btn: {
     borderRadius: 8,
-    margin: 10,
+    marginHorizontal: 10,
+    marginBottom: 20,
   },
   photoArea: {
     justifyContent: 'center',
