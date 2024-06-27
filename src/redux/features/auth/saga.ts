@@ -10,8 +10,8 @@ import {
   signUp,
   signUpSuccess,
   signUpFailure,
-  LoginPayload,
   signOut,
+  LoginPayload,
 } from './slice';
 
 function* signInSaga(

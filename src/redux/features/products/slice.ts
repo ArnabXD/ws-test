@@ -1,30 +1,35 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {PayloadAction} from '@reduxjs/toolkit';
 
-interface Product {
+export interface Product {
   id: string;
   name: string;
   description: string;
-  array: string;
+  photo: string;
   price: string;
 }
 
-interface ProductsState {
+export type CreateProductType = Omit<Product, 'id'> & {
+  uid: string;
+  onSuccess: () => unknown;
+};
+
+export interface ProductsState {
   products: Array<Product>;
   fetchingProducts: boolean;
-  productsFetchError: string | null;
   productInView: Product | null;
   fetchingProductInView: boolean;
-  fetchingProductInViewError: string | null;
+  creatingProduct: boolean;
+  updatingProduct: boolean;
 }
 
 const initialState: ProductsState = {
   products: [],
   fetchingProducts: false,
-  productsFetchError: null,
   productInView: null,
   fetchingProductInView: false,
-  fetchingProductInViewError: null,
+  creatingProduct: false,
+  updatingProduct: false,
 };
 
 const productSlice = createSlice({
@@ -32,8 +37,10 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     getProducts: (state, _action: PayloadAction<string>) => {
-      state.fetchingProducts = true;
-      state.productsFetchError = null;
+      // don't show this loader for refetching
+      if (!state.products.length) {
+        state.fetchingProducts = true;
+      }
     },
     getProductsSuccess: (
       state,
@@ -42,10 +49,6 @@ const productSlice = createSlice({
       state.fetchingProducts = false;
       state.products = action.payload;
     },
-    getProductsFail: (state, {payload}: PayloadAction<string>) => {
-      state.fetchingProducts = false;
-      state.productsFetchError = payload;
-    },
     getProduct: (state, _action: PayloadAction<string>) => {
       state.fetchingProductInView = true;
     },
@@ -53,19 +56,56 @@ const productSlice = createSlice({
       state.fetchingProductInView = false;
       state.productInView = action.payload;
     },
-    getProductFail: (state, action: PayloadAction<string>) => {
-      state.fetchingProductInView = false;
-      state.fetchingProductInViewError = action.payload;
+    createProduct: (state, _action: PayloadAction<CreateProductType>) => {
+      state.creatingProduct = true;
+    },
+    createProductSuccess: (state, action: PayloadAction<() => unknown>) => {
+      state.creatingProduct = false;
+      action.payload();
+    },
+    updateProduct: (state, action: PayloadAction<Product>) => {
+      state.updatingProduct = true;
+    },
+    updateProductSuccess: (state, {payload}: PayloadAction<Product>) => {
+      return {
+        ...state,
+        productInView: {
+          ...state.productInView!,
+          ...payload,
+        },
+        updatingProduct: false,
+        products: state.products.map(item => {
+          if (item.id === state.productInView?.id) {
+            return {...state.productInView, ...payload};
+          }
+          return item;
+        }),
+      };
+    },
+    deleteProduct: (state, action: PayloadAction<string>) => {
+      state.products = state.products.filter(
+        data => data.id !== action.payload,
+      );
+    },
+    setData: (state, action: PayloadAction<Partial<ProductsState>>) => {
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
   },
 });
 
 export const {
   getProduct,
-  getProductFail,
   getProductSuccess,
   getProducts,
-  getProductsFail,
   getProductsSuccess,
+  createProduct,
+  createProductSuccess,
+  updateProduct,
+  updateProductSuccess,
+  deleteProduct,
+  setData,
 } = productSlice.actions;
 export default productSlice.reducer;

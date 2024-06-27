@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* webskittersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* webskittersTests.m */; };
 		0662C3772C2C41110087333C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0662C3762C2C41110087333C /* GoogleService-Info.plist */; };
+		06BEF1C72C2D61E70095FA08 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BEF1C52C2D61E70095FA08 /* Ionicons.ttf */; };
+		06BEF1C82C2D61E70095FA08 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06BEF1C62C2D61E70095FA08 /* MaterialCommunityIcons.ttf */; };
+		100E89B440554C988FC424D1 /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAF44216493D4C8FAE0E9B34 /* BootSplash.storyboard */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -33,6 +36,8 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* webskittersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = webskittersTests.m; sourceTree = "<group>"; };
 		0662C3762C2C41110087333C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		06BEF1C52C2D61E70095FA08 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		06BEF1C62C2D61E70095FA08 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* webskitters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webskitters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = webskitters/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = webskitters/AppDelegate.mm; sourceTree = "<group>"; };
@@ -47,6 +52,7 @@
 		5DE84A7EDBA93D41C31FD96D /* Pods_webskitters.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_webskitters.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = webskitters/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-webskitters-webskittersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-webskitters-webskittersTests.release.xcconfig"; path = "Target Support Files/Pods-webskitters-webskittersTests/Pods-webskitters-webskittersTests.release.xcconfig"; sourceTree = "<group>"; };
+		BAF44216493D4C8FAE0E9B34 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = webskitters/BootSplash.storyboard; sourceTree = "<group>"; };
 		CB31687B529187B04B8355CE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = webskitters/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -88,6 +94,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		06FEA0FA2C2D5F96003F91F6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				06BEF1C52C2D61E70095FA08 /* Ionicons.ttf */,
+				06BEF1C62C2D61E70095FA08 /* MaterialCommunityIcons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* webskitters */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +114,7 @@
 				13B07FB71A68108700A75B9A /* main.m */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
 				CB31687B529187B04B8355CE /* PrivacyInfo.xcprivacy */,
+				BAF44216493D4C8FAE0E9B34 /* BootSplash.storyboard */,
 			);
 			name = webskitters;
 			sourceTree = "<group>";
@@ -123,6 +139,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				06FEA0FA2C2D5F96003F91F6 /* Fonts */,
 				0662C3762C2C41110087333C /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* webskitters */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -250,10 +267,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06BEF1C72C2D61E70095FA08 /* Ionicons.ttf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				0662C3772C2C41110087333C /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				06BEF1C82C2D61E70095FA08 /* MaterialCommunityIcons.ttf in Resources */,
 				4D8CDE61B818FB04EACCB531 /* PrivacyInfo.xcprivacy in Resources */,
+				100E89B440554C988FC424D1 /* BootSplash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

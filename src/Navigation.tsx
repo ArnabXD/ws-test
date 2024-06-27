@@ -10,6 +10,8 @@ import {StackScreens} from './navtypes';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home';
+import CreateOrUpdate from './pages/CreateOrUpdate';
+import ViewProduct from './pages/View';
 
 const Stack = createNativeStackNavigator<StackScreens>();
 
@@ -29,6 +31,20 @@ export default function Navigation() {
       {user ? (
         <>
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen
+            name="CreateOrUpdate"
+            component={CreateOrUpdate}
+            options={({route}) => ({
+              headerTitle: route.params?.docId
+                ? 'Update Product'
+                : 'Create Product',
+            })}
+          />
+          <Stack.Screen
+            name="View"
+            component={ViewProduct}
+            options={({route}) => ({headerTitle: route.params.name})}
+          />
         </>
       ) : (
         <>
